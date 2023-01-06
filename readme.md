@@ -1,54 +1,52 @@
 # Gobblets-Gobblers
-Ce projet _Gobblets-Gobblers_ a été réalisé par Alenso Lopes et Julien Sailly dans le cadre d'étude en BUT Informatique.
+This project _Gobblets-Gobblers_ was realized by Alenso Lopes and Julien Sailly in the framework of study in BUT Informatique.
 
-Codé grâce au language de programmation C, il permet de jouer à ce jeu de société dans le terminal linux.
+Coded thanks to the programming language C, it allows to play this board game in the linux terminal.
 
-Ce projet inclut un classement entre les différents joueur, une option de sauvegarde automatique lors d'une partie non terminée avec possibilité de la reprendre.
+This project includes a ranking between the different players, an automatic save option when a game is not finished with the possibility to resume it.
 
-## Mode d'emploi
+## How to use
 
-  1) Compiler le programme en incluant le fichier main.c ainsi que le board.c.
-  `gcc -Wall main.c board.c -o gobblers`
-  2) Lancer le programme.
+  1) Compile the program including the main.c file and the board.c file.
+  gcc -Wall main.c board.c -o gobblers`
+  2) Run the program.
   `./gobblers`
 
-  ![Gif de la compilation](img/COMPILE.gif)
+  ![Compilation gif](img/COMPILE.gif)
 
-  4) Une fois le programme lancé, il vous est possible d'accéder au jeu et à son classement.
-  5) Une fois dans le jeu, chaque joueur doit choisir un pseudonyme.
-  6) Ensuite, les étapes de lancement sont prêtes. Il vous est donc possible de jouer.
-  7) Pour jouer, vous devez déterminer si vous voulez placer une pièce ou en déplacer une.
-![Gif du placement des pièces](img/PLACE.gif) 
-  8) En cas de déplacement, si vous n'avez pas de pièce il ne sera pas possible d'en déplacer une.
-![Gif du déplacement des pièces](img/MOVE.gif)
-  9) En cas de placement d'une pièce, vous devez sélectionner la pièce à placer ainsi que saisir ses coordonnées (0,2).
-  10) C'est un jeu en tour par tour, il sera donc au second joueur de jouer.
-![Gif de la victoires](img/WIN.gif)
-  11) Si vous quittez la partie lorsqu'elle est en cours, et si vous relancez le programme vous pourrez au choix : recommencer une partie ou continuer celle non terminée.
-  ![Gif de la sauvegarde](img/save.gif)
-    
-  12) Une fois la partie terminée, vous pouvez accéder au classement avec des points selon les victoires et les défaites. (+10/-8).
-  ![Gif du classement](img/RANK.gif)
+  4) Once the program is launched, you can access the game and its ranking.
+  5) Once in the game, each player must choose a nickname.
+  6) Then, the launching steps are ready. You can now play.
+  7) To play, you must decide whether you want to place a piece or move one.
+![Piece placement gif](img/PLACE.gif) 
+  8) If you want to move a piece, if you don't have any piece, it will not be possible to move one.
+![Gif of moving pieces](img/MOVE.gif)
+  9) If you want to place a piece, you have to select the piece to place and enter its coordinates (0,2).
+  10) This is a turn-based game, so it will be the second player to play.
+![Victory Gif](img/WIN.gif)
+  11) If you leave the game while it is in progress, and if you restart the program you will be able to choose: to start again a game or to continue the one not finished.
+  ![Save Gif](img/save.gif)
+  12) Once the game is finished, you can access the ranking with points according to the victories and defeats. (+10/-8).
+  ![Ranking Gif](img/RANK.gif)
 
-## Système de stockage des données du leaderboard
-
-  1) Le premier chiffre dans le fichier classement.txt correspond au nombre de joueur inscrit dans le classement.
-  2) La première information de chaque colonne correspond au nom du joueur
-  3) La Deuxième information de chaque colonne correspond au nombre de point du joueur.
+## Leaderboard data storage system
+  1) The first number in the leaderboard.txt file is the number of players in the leaderboard.
+  2) The first information in each column is the name of the player
+  3) The second information in each column is the number of points of the player.
 ```
 2
 Alenso 10
 Julien -8
 ```
 
-## Système de stockage des données du système de sauvegarde
+## Data storage system
 
-  1) La premières information correspond aux tailles des pièces présentes sur le plateau. Chaque ligne est séparée par des `|` et chaque cases par des `;`.
-  2) La seconde information correspond aux propriétaires de chaque pièce sur le plateau. Les lignes sont séparées par des `|` et les cases par des `;`.
-  3) La troisième information correspond au tour du joueur en cours.
-  4) La dernière information correspond au nombre de pièces disponible dans les maison pour chaque joueur. Les joueurs sont séparées par des `|`.
+  1) The first information corresponds to the sizes of the pieces on the board. Each line is separated by `|` and each square by `;`.
+  2) The second information corresponds to the owners of each piece on the board. The lines are separated by `|` and the squares by `;`.
+  3) The third information corresponds to the current player's turn.
+  4) The last information corresponds to the number of pieces available in the houses for each player. The players are separated by `|`.
 
-Au début du jeu, on a :
+At the beginning of the game we have :
 ```
 sizes: 0,0,0,0,;0,0,0,0,;0,0,0,0,;|0,0,0,0,;0,0,0,0,;0,0,0,0,;|0,0,0,0,;0,0,0,0,;0,0,0,0,;|
 players: 0,0,0,0,;0,0,0,0,;0,0,0,0,;|0,0,0,0,;0,0,0,0,;0,0,0,0,;|0,0,0,0,;0,0,0,0,;0,0,0,0,;|
@@ -56,16 +54,16 @@ turn_player: 1,
 houses: 2,2,2,|2,2,2,|�
 ```
 
-## Extensions sélectionnées
+## Selected extensions
 
-### Sauvegarde
+### Backup
 
-L'extension de sauvegarde permet d'enregistrer une partie dans un fichier `save.txt`. Cette sauvegarde se déroule automatiquement à la fin de chaque tours et enregistre l'état du plateau, le joueur devant jouer ainsi que les pièces appartenants aux joueurs.
+The save extension allows you to save a game in a `save.txt` file. This save takes place automatically at the end of each round and records the state of the board, the player to play and the pieces belonging to the players.
 
-### Classement
+### Ranking
 
-Cette extension a pour but d'enregistrer dans un fichier les noms des différents joueurs ayant lancé une partie, ainsi que leurs scores respectifs. 
+The purpose of this extension is to save in a file the names of the different players who have started a game, as well as their respective scores. 
 
-Au lancement du jeu, il est possible de visualiser ce classement trié dans l'ordre décroissant en fonction du score. 
+When the game is launched, it is possible to view this ranking sorted in descending order according to the score. 
 
-Pour finir, le joueur gagnant voit son score augmenter de +10 points et le joueur perdant perd 8 points. 
+Finally, the winning player sees his score increase by +10 points and the losing player loses 8 points. 
